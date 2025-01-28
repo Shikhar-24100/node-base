@@ -4,6 +4,7 @@ const app = express();
 const tasks = require('./routes/tasks')
 const connectDB = require('./db/connection')
 require('dotenv').config()
+const notFound = require('./middleware/not-found')
 
 require('./db/connection')
 
@@ -19,6 +20,8 @@ app.use(express.static('./public'))
 
 
 app.use('/api/v1/tasks', tasks)
+
+app.use(notFound)
 
 // app.get()
 
